@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#1a1a2e">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>مترجم لغة الإشارة العربية</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+
+  <!-- MediaPipe CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="app">
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+      <div class="loader">
+        <div class="spinner"></div>
+        <h2>جاري تحميل النموذج...</h2>
+        <p id="loading-status">تهيئة TensorFlow.js</p>
+      </div>
+    </div>
+
+    <!-- Main App -->
+    <div id="main-app" class="main-app hidden">
+      <!-- Header -->
+      <header class="header">
+        <h1>مترجم لغة الإشارة</h1>
+        <p>وجّه الكاميرا نحو يدك</p>
+      </header>
+
+      <!-- Video Container -->
+      <div class="video-container">
+        <video id="video" playsinline></video>
+        <canvas id="canvas"></canvas>
+        <div id="hand-box" class="hand-box hidden"></div>
+      </div>
+
+      <!-- Prediction Display -->
+      <div class="prediction-container">
+        <div id="prediction-box" class="prediction-box">
+          <span id="predicted-letter" class="predicted-letter">-</span>
+          <div id="confidence-bar" class="confidence-bar">
+            <div id="confidence-fill" class="confidence-fill"></div>
+          </div>
+          <span id="confidence-text" class="confidence-text">0%</span>
+        </div>
+      </div>
+
+      <!-- Sentence Builder -->
+      <div class="sentence-container">
+        <div id="sentence" class="sentence" dir="rtl"></div>
+        <div class="sentence-controls">
+          <button id="clear-btn" class="btn btn-clear">مسح</button>
+          <button id="space-btn" class="btn btn-space">مسافة</button>
+          <button id="copy-btn" class="btn btn-copy">نسخ</button>
+        </div>
+      </div>
+
+      <!-- Camera Switch (for mobile) -->
+      <button id="switch-camera" class="switch-camera-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M11 19H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h5"/>
+          <path d="M13 5h7a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-5"/>
+          <circle cx="12" cy="12" r="3"/>
+          <path d="m18 22-3-3 3-3"/>
+          <path d="m6 2 3 3-3 3"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <script type="module" src="/main.js"></script>
+</body>
+</html>

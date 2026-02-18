@@ -1,0 +1,19 @@
+# Miscellaneous
+*.log
+.DS_Store
+
+# Node modules
+**/node_modules/
+
+# Build outputs
+build/
+**/build/
+
+# Firebase
+.firebase/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
