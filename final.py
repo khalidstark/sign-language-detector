@@ -2,7 +2,6 @@ import cv2 # type: ignore
 import numpy as np  # type: ignore
 import mediapipe as mp # type: ignore
 from tensorflow.keras.models import load_model  # type: ignore
-from PIL import ImageFont, ImageDraw, Image # type: ignore
 import tkinter as tk
 from tkinter import Label
 
