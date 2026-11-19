@@ -4,7 +4,6 @@ from tensorflow.keras.models import load_model
 import mediapipe as mp
 from mediapipe.tasks import python
 from mediapipe.tasks.python import vision
-import urllib.request
 import os
 
 # Hand landmarker model path
