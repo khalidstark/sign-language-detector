@@ -68,19 +68,6 @@ def get_predicted_letter(frame):
 def create_prediction_window():
     window = tk.Tk()
     window.title("Predicted Letter")
-    window.geometry("300x200")
-    label = Label(window, text="Predicted: ", font=("Arial", 20))
-    label.pack(expand=True)
-
-    def update_prediction(new_prediction):
-        label.config(text=f"Predicted: {new_prediction}")
-
-    return window, update_prediction
-
-# إعداد نافذة Tkinter لعرض الحرف المتنبأ به
-def create_prediction_window():
-    window = tk.Tk()
-    window.title("Predicted Letter")
     window.geometry("400x200")
     label = Label(window, text="Predicted: ", font=("Arial", 20))
     label.pack(expand=True)
