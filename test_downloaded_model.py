@@ -1,3 +1,4 @@
+import sys
 import cv2
 import numpy as np
 from tensorflow.keras.models import load_model
@@ -10,7 +11,7 @@ import os
 MODEL_PATH = 'hand_landmarker.task'
 if not os.path.exists(MODEL_PATH):
     print("Error: hand_landmarker.task not found. Please download it first.")
-    exit(1)
+    sys.exit(1)
 
 # Path to the downloaded model
 DOWNLOADED_MODEL_PATH = '/Users/khalid/Downloads/asl_model_improved.h5'
@@ -44,7 +45,7 @@ detector = vision.HandLandmarker.create_from_options(options)
 cap = cv2.VideoCapture(0)
 if not cap.isOpened():
     print("Error: Could not open camera")
-    exit(1)
+    sys.exit(1)
 
 print("\n=== Arabic Sign Language Recognition (Downloaded Model) ===")
 print("Show your hand to the camera")

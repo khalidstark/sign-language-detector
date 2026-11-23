@@ -1,3 +1,4 @@
+import sys
 import cv2 # type: ignore
 import numpy as np  # type: ignore
 import mediapipe as mp # type: ignore
@@ -17,7 +18,7 @@ cap = cv2.VideoCapture(0)
 # التأكد من فتح الكاميرا بنجاح
 if not cap.isOpened():
     print("Error: Could not open video capture.")
-    exit()
+    sys.exit()
 
 # القاموس الذي يربط بين الحروف الإنجليزية والعربية
 english_to_arabic = {
