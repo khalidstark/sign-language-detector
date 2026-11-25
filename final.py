@@ -18,7 +18,7 @@ cap = cv2.VideoCapture(0)
 # التأكد من فتح الكاميرا بنجاح
 if not cap.isOpened():
     print("Error: Could not open video capture.")
-    sys.exit()
+    sys.exit(1)
 
 # القاموس الذي يربط بين الحروف الإنجليزية والعربية
 english_to_arabic = {
