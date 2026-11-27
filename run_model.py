@@ -28,6 +28,9 @@ english_to_arabic = {
     'yaa': 'ي', 'zay': 'ز'
 }
 
+# Class labels in model output order, built once instead of on every frame
+class_labels = list(english_to_arabic.keys())
+
 # Create hand landmarker
 base_options = python.BaseOptions(model_asset_path=MODEL_PATH)
 options = vision.HandLandmarkerOptions(
@@ -84,7 +87,7 @@ while True:
 
         if max_pred > 0.90:
             predicted_class = np.argmax(pred, axis=1)
-            predicted_label = list(english_to_arabic.keys())[predicted_class[0]]
+            predicted_label = class_labels[predicted_class[0]]
             predicted_letter = english_to_arabic[predicted_label]
 
         # Draw landmarks on frame
