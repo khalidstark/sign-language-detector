@@ -74,16 +74,10 @@ def create_prediction_window():
     label.pack(expand=True)
 
     def update_prediction(new_prediction, confidence):
-        if confidence > 0.90:
-            label.config(
-                text=f"Predicted: {new_prediction}\nConfidence: {confidence*100:.2f}%",
-                fg="green"
-            )
-        else:
-            label.config(
-                text=f"Predicted: {new_prediction}\nConfidence: {confidence*100:.2f}%",
-                fg="red"
-            )
+        label.config(
+            text=f"Predicted: {new_prediction}\nConfidence: {confidence*100:.2f}%",
+            fg="green" if confidence > 0.90 else "red"
+        )
 
     return window, update_prediction
 
