@@ -29,6 +29,8 @@ english_to_arabic = {
     'taa': 'ت', 'thaa': 'ث', 'thal': 'ذ', 'toot': 'ة', 'waw': 'و', 'ya': 'ئ',
     'yaa': 'ي', 'zay': 'ز'
 }
+# ترتيب الأصناف كما تم التدريب عليها
+class_labels = list(english_to_arabic.keys())
 
 # دالة لاستخراج معالم اليد من الإطار
 def extract_hand_landmarks(frame):
@@ -59,7 +61,7 @@ def get_predicted_letter(frame):
         max_pred = np.max(pred)
         if max_pred > 0.90:  # إذا كانت النسبة أكبر من 90% يمكننا الثبات على التنبؤ
             predicted_class = np.argmax(pred, axis=1)
-            predicted_label = list(english_to_arabic.keys())[predicted_class[0]]
+            predicted_label = class_labels[predicted_class[0]]
             return english_to_arabic[predicted_label], bbox, max_pred
         else:
             return None, None, max_pred
